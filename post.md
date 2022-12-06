@@ -27,7 +27,7 @@ In my spreadsheet I included: The Pass/Fail assessment, the Web Vital scores (LC
 
 The spreadsheet is available at [this repo](https://github.com/ClarkMitchell/next-mobile-perf). The scores in the spreadsheet were fetched on December 5, 2022. The links in the URL column should open the relevant PageSpeed Insights page and may show varying scores from whats recorded here.
 
-![Image render of spreadsheet available at https://github.com/ClarkMitchell/next-mobile-perf](./next-showcase-mobile-web-vitals.png)
+![Image of a 110 row spreadsheet of the mobile web vitals scores of sites built with the Next.js framework. Spreadsheet available at https://github.com/ClarkMitchell/next-mobile-perf](./next-showcase-mobile-web-vitals.png)
 
 ## Interpretation
 
@@ -59,7 +59,7 @@ The spreadsheet includes a Median and Average row, but to get a more intutitive 
 | TTFB       | 38   | 55                | 14   |
 | Lighthouse | 2    | 18                | 87   |
 
-![stacked bar chart available in the overview sheet of the spreadsheet](./overview-chart.png)
+![stacked bar chart of Good, Needs Improvement, and Poor scores for each Web vital plus Lighthouse. Available in the overview sheet of the spreadsheet](./overview-chart.png)
 
 FID and INP scores are the opposite to what I would have intuited. FID is mostly a load time score, and I would expect sites with large Javascript bundles and long hydration tasks to have poor FID. INP is still an experimental metric but is meant to cover all interactions and not just the first. I would expect SPA-like client side interactivity to do better with INP after hydration but the opposite is true for Next, good FID and poor INP.
 
@@ -69,8 +69,10 @@ In my case, where constraints prevent server rendering and preloading of LCP ima
 
 All of these sites have different requirements in terms of interactivity, 3rd party, and are likely hosted on a variety of platforms. The only thing in common between them is Next.js. But this is still just a snapshot of sites built with Next.
 
+## Http Archive
+
 Using the Core Web Vitals Technology Report on Http Archive, we can compare [Next against all other technologies](https://datastudio.google.com/reporting/55bc8fad-44c2-4280-aa0b-5f3f0cd3d2be/page/M6ZPC?params=%7B%22df44%22:%22include%25EE%2580%25800%25EE%2580%2580IN%25EE%2580%2580ALL%25EE%2580%2580Next.js%22%7D) in the Http Archive data set.
 
-![alt](./next-vs-all.png)
+![Line chart comparing Next Core Web Vital Scores against an average line of all other technologies from Http Archive.](./next-vs-all.png)
 
 Next performs worse on mobile than the average site. The 25.9% of Next sites having good CWV scores in October is close to the 24.5% of passing sites from the Showcase data.
