@@ -5,23 +5,25 @@
 Next.js is one of the most popular React frameworks and is seeing heavy adoption.
 I am currently working on performance remediation for a large e-commerce site built with Next. While the site has numerous 3rd party analytics, observability, and clientside A/B testing scripts, the performance bottlenecks I am facing are mostly due to large app, vendor, and framework JavaScript bundles.
 
+![Next.js logo](./next-logo.png)
+
 ## Mobile Web Performance
 
-While modern phones often sport impressive specs similar to desktop ones, due to thermal constraints, network volatility, and the additional necessary background work, only a portion of that device power translates to web performance. [Progressive Performance (Chrome Dev Summit 2016)](https://www.youtube.com/watch?v=4bZvq3nodf4) is a great talk that goes into the constraints of mobile devices and their impact on performance.
+While modern phones often sport impressive specs similar to desktop ones, due to thermal constraints, network volatility, and the additional necessary background work, only a portion of that device power translates to web performance. Progressive Performance (Chrome Dev Summit 2016) is a great talk that goes into the constraints of mobile devices and their impact on performance. [Youtube link](https://www.youtube.com/watch?v=4bZvq3nodf4)
 
 For my project, mobile performance is my largest concern, desktop scores are mostly fine. 75% of site traffic, however, comes from mobile, and the site has failing web vital scores for many page types on mobile. I wanted to get a view of where my project sits in the performance landscape of mobile sites built with Next.js so I sought some data to compare.
 
 ## Methodology
 
-Next.js includes a [Showcase page](https://nextjs.org/showcase) for sites built with the framework. The list contains many enterprise, fortune 500 companies and submissions can be proposed via a github discussion thread.
+Next.js includes a [Showcase page](https://nextjs.org/showcase) for sites built with the framework. The list contains many enterprise, Fortune 500 companies and submissions can be proposed via a github discussion thread.
 
 I scraped the links and then verified Next.js was used on the linked page. I threw out `giveindia.org` which redirected to a site not built with Next. `Jet.com` seems to have been acquired by Walmart since it now redirects there, fortunately, `walmart.com` is using Next so I just swapped Jet for Walmart.
 
 With this list, I generated a list of links pointing to the [PageSpeed Insights](https://pagespeed.web.dev) scores of each Next URL. I manually copied the Web Vital and Lighthouse scores to a spreadsheet. (I could have automated this but was leery of introducing bugs that might impact scores)
 
-PageSpeed Insights includes web vital scores from the Chrome User Experience Report (CrUX) for the last 28 days. It also provides a Lighthouse audit run with preconfigured specs and a Pass/Fail assessment score. A Passing score is given if the three Core Web Vital scores (LCP, FID, CLS) are green for the last 28-day period.
+PageSpeed Insights includes web vital scores from the Chrome User Experience Report (CrUX) for the last 28 days. It also provides a Lighthouse audit run with preconfigured specs and a Pass/Fail assessment score. A Passing score is given if the three Core Web Vital scores, Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS) are green for the last 28-day period.
 
-In my spreadsheet, I included: The Pass/Fail assessment, the Web Vital scores (LCP, FID, CLS, FCP, INP, TTFB), and just the main Lighthouse performance score.
+In my spreadsheet, I included: The Pass/Fail assessment, the three Core Web Vital scores, other web vitals: First Contentful Paint (FCP), Interaction to Next Paint (INP), and Time To First Byte (TTFB), and just the main Lighthouse performance score.
 
 ## Results
 
@@ -69,13 +71,17 @@ In my case, where constraints prevent server rendering and preloading of LCP ima
 
 All of these sites have different requirements in terms of interactivity and 3rd party and are likely hosted on a variety of platforms. Any given performance issue for any individual site can't be attributed to Next with this data alone, but the one thing these sites have in common is Next.js, and the overall picture is negative.
 
-We can compare Next to other technologies using a report available from Http Archive.
-
 ## Http Archive
 
-Using the Core Web Vitals Technology Report on Http Archive, we can compare [Next against all other technologies](https://datastudio.google.com/reporting/55bc8fad-44c2-4280-aa0b-5f3f0cd3d2be/page/M6ZPC?params=%7B%22df44%22:%22include%25EE%2580%25800%25EE%2580%2580IN%25EE%2580%2580ALL%25EE%2580%2580Next.js%22%7D) in the Http Archive data set.
+We can compare Next to other technologies using a report available from Http Archive.
+
+![Line chart of percent of sites achieving good core web vital scores using all technologies in the Http Archive data set](./cwv.png)
+
+According to [this report](https://datastudio.google.com/reporting/55bc8fad-44c2-4280-aa0b-5f3f0cd3d2be/page/M6ZPC?params=%7B%22df44%22:%22include%25EE%2580%25800%25EE%2580%2580IN%25EE%2580%2580ALL%22%7D) only about 40% of sites are getting a good score for all three Core Web Vitals. So thats not great for mobile users of the web, which is to say all of us, but if we add Next to this report we get an even starker picture.
 
 ![Line chart comparing Next Core Web Vital Scores against an average line of all other technologies from Http Archive.](./next-vs-all.png)
+
+[Report link](https://datastudio.google.com/reporting/55bc8fad-44c2-4280-aa0b-5f3f0cd3d2be/page/M6ZPC?params=%7B%22df44%22:%22include%25EE%2580%25800%25EE%2580%2580IN%25EE%2580%2580ALL%25EE%2580%2580Next.js%22%7D) in the Http Archive data set.
 
 Next performs worse on mobile than the average site. 25.9% of Next sites have good CWV scores in October and this percentage is close to the 24.5% of passing sites from the Showcase data.
 
