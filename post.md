@@ -9,7 +9,7 @@ I am working on performance remediation for a large e-commerce site built with N
 
 ## Mobile Web Performance
 
-While modern phones often sport impressive specs similar to desktop ones, due to thermal constraints, network volatility, and the additional necessary background work, only a portion of that device power translates to web performance. Progressive Performance (Chrome Dev Summit 2016) is a great talk that goes into the constraints of mobile devices and their impact on performance. [Youtube link](https://www.youtube.com/watch?v=4bZvq3nodf4)
+While modern phones often sport impressive specs similar to desktop ones, due to thermal constraints, network volatility, and the additional necessary background work, only a portion of that device power translates to web performance. Progressive Performance (Chrome Dev Summit 2016) is a great talk that goes into the constraints of mobile devices and the impact on performance. [Youtube link](https://www.youtube.com/watch?v=4bZvq3nodf4)
 
 For my project, mobile performance is my most significant concern; desktop scores are mostly acceptable. 75% of site traffic comes from mobile, and the site has failing Core Web Vital (CWV) scores for many page types. I wanted to see where my project sits in the performance landscape of mobile sites built with Next.js, so I sought some data to compare.
 
@@ -17,11 +17,11 @@ For my project, mobile performance is my most significant concern; desktop score
 
 Next.js includes a [Showcase page](https://nextjs.org/showcase) for sites built with the framework. The list contains many enterprise and Fortune 500 companies. Submissions are proposed via a github discussion thread.
 
-I scraped the links and verified Next.js is used on the page. I threw out giveindia.org, which redirected to a site not built with Next. Jet.com seems to have been acquired by Walmart since it now redirects there; fortunately, walmart.com is using Next, so I just swapped Jet for Walmart.
+I scraped each link and verified Next.js is used on the page. I threw out giveindia.org, which redirected to a site not built with Next. Jet.com seems to have been acquired by Walmart since it now redirects there; fortunately, walmart.com is using Next, so I just swapped Jet for Walmart.
 
-With this list, I generated a list of links pointing to the [PageSpeed Insights](https://pagespeed.web.dev) scores of each Next URL. I manually copied the Web Vital and Lighthouse scores to a spreadsheet. (I could have automated this but was leery of introducing bugs that might impact scores)
+With this list of URLs, I generated a list of links pointing to the [PageSpeed Insights](https://pagespeed.web.dev) scores of each Next URL. I manually copied the Web Vital and Lighthouse scores to a spreadsheet. (I could have automated this but was leery of introducing bugs that might impact scores)
 
-PageSpeed Insights includes web vital scores from the Chrome User Experience Report (CrUX) for the last 28 days. It also provides a Lighthouse audit run with preconfigured specs and a Pass/Fail assessment score. A Passing score is given if the three Core Web Vital scores, Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS) are green for the last 28-day period.
+PageSpeed Insights includes Web Vital scores from the Chrome User Experience Report (CrUX) for the last 28 days. It also provides a Lighthouse audit run with preconfigured specs and a Pass/Fail assessment score. A Passing score is given if the three Core Web Vital scores, Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS) are green for the last 28-day period.
 
 In my spreadsheet, I included: The Pass/Fail assessment, the three Core Web Vital scores, and other web vitals: First Contentful Paint (FCP), Interaction to Next Paint (INP), and Time To First Byte (TTFB), and just the main Lighthouse performance score.
 
