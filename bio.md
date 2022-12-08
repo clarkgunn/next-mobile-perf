@@ -1,4 +1,4 @@
-Clark Gunn is a Senior Frontend Engineer at Formidable, working on performance, accessibility, and sustainability.
+Clark Gunn is a Senior Frontend Engineer at [Formidable](https://formidable.com/), working on performance, accessibility, and sustainability.
 
 [mastodon](https://mastodon.social/@clarkgunn)
 
